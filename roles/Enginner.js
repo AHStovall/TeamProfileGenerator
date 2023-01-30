@@ -1,6 +1,6 @@
 const Employee = require("../roles/Employee");
 
-const EngineerQuestionsArr = [{
+const engineerQuestionsArr = [{
     type: 'input',
     name: 'name',
     message: "What is the engineer's name?"
@@ -34,4 +34,4 @@ class Engineer extends Employee {
     }
     
 }
-module.exports = { Engineer, EngineerQuestionsArr };
+module.exports = { Engineer, engineerQuestionsArr };
