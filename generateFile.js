@@ -52,7 +52,7 @@ const generateIntern = function (intern) {
     `
 };
 
-generateHTML = (data) => {
+generateFile = (data) => {
     pageArray = []; 
 
     for (let i = 0; i < data.length; i++) {
@@ -87,7 +87,7 @@ generateHTML = (data) => {
 
 }
 
-// generate html page 
+
 const generateTeamPage = function (employeeCards) {   
     return`
     <!DOCTYPE html>

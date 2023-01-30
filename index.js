@@ -73,4 +73,8 @@ const addEmployee = () => {
     })
 };
 
-init(addEmployee);
+function init() {
+    addEmployee;
+}
+
+init();
