@@ -3,43 +3,104 @@ const generateFile = require('./generateFile')
 const fs = require('fs')
 
 //constructor classes/questions for each class
-const {Manager, managerQuestionsArr} = require('./roles/Manager');
-const { Intern, internQuestionsArr } = require('./roles/Intern');
-const { Engineer, engineerQuestionsArr } = require('./roles/Engineer');
+const Manager = require('./roles/Manager');
+const Intern = require('./roles/Intern');
+const Engineer = require('./roles/Engineer');
+
 
 //Array to store all of the team members
 const employeeArr = [];
 
 const addManager = () => {
-    return inquirer.prompt(managerQuestionsArr)
-    .then(managerAnswer => {
-        const {name, id, email, officeNumber } = managerAnswer;
-        const manager = new Manager (name, id, email, officeNumber);
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the manager's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the manager's Id?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the manager's email?"
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: "What is the manager's office number?"
+        }
+    
+    ])
+    .then((answer) => {
+        answer = new Manager(answer.name, answer.id, answer.email, answer.officeNumber);
 
-        employeeArr.push(manager);
-        console.log(manager);
+        employeeArr.push(answer);
+        console.log(answer);
     })
 };
 
 const addEngineer = () => {
-    return inquirer.prompt(engineerQuestionsArr)
-    .then(engineerAnswer => {
-        const {name, id, email, officeNumber } = engineerAnswer;
-        const engineer = new Engineer (name, id, email, officeNumber);
+    return inquirer.prompt([{
+        type: 'input',
+        name: 'name',
+        message: "What is the engineer's name?"
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: "What is the engineer's Id?"
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "What is the engineer's email?"
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "What is the engineer's github user name?"
+    }])
+    .then((answer) => {
+        answer = new Engineer(answer.name, answer.id, answer.email, answer.github);
 
-        employeeArr.push(engineer);
-        console.log(engineer);
+        employeeArr.push(answer);
+        console.log(answer);
     })
 }
 
 const addIntern = () => {
-    return inquirer.prompt(internQuestionsArr)
-    .then(internAnswer => {
-        const {name, id, email, officeNumber } = internAnswer;
-        const intern = new Intern (name, id, email, officeNumber);
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the intern's Id?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the intern's email?"
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "What is the intern's school?"
+        }
+    
+    ])
+    .then((answer) => {
+        answer = new Intern(answer.name, answer.id, answer.email, answer.school);
 
-        employeeArr.push(intern);
-        console.log(intern);
+        employeeArr.push(answer);
+        console.log(answer);
     })
 }
 
@@ -60,15 +121,18 @@ const addEmployee = () => {
     ]).then( selection => {
         if(selection.employeeClass === 'addEngineer') {
             addEngineer;
-            generateFile();
+            // generateFile();
         };
         if(selection.employeeClass === 'addManager') {
             addManager;
-            generateFile();
+            // generateFile();
         };
         if(selection.employeeClass === 'addIntern') {
             addIntern;
-            generateFile();
+            // generateFile();
+        };
+        if(selection.employeeClass === 'end') {
+            generateFile(employeeArr);
         }
     })
 };
