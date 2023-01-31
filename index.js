@@ -119,16 +119,25 @@ const addEmployee = () => {
         }
     ]).then( selection => {
         if(selection.employeeClass === 'addEngineer') {
-            addEngineer();
-            // generateFile();
+            switch(addEngineer()) {
+            case 0:
+            addEmployee();
+            break;
+            }
         };
         if(selection.employeeClass === 'addManager') {
-            addManager();
-            // generateFile();
+            switch(addManager()) {
+                case 0:
+                addEmployee();
+                break;
+                }
         };
         if(selection.employeeClass === 'addIntern') {
-            addIntern();
-            // generateFile();
+            switch(addIntern()) {
+                case 0:
+                addEmployee();
+                break;
+                }
         };
         if(selection.employeeClass === 'end') {
             html = templateFile(employeeArr)
