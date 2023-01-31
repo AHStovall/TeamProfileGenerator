@@ -39,6 +39,7 @@ const addManager = () => {
 
         employeeArr.push(answer);
         console.log(answer);
+        addEmployee();
     })
 };
 
@@ -68,6 +69,7 @@ const addEngineer = () => {
 
         employeeArr.push(answer);
         console.log(answer);
+        addEmployee();
     })
 }
 
@@ -100,6 +102,7 @@ const addIntern = () => {
 
         employeeArr.push(answer);
         console.log(answer);
+        addEmployee();
     })
 }
 
@@ -119,32 +122,22 @@ const addEmployee = () => {
         }
     ]).then( selection => {
         if(selection.employeeClass === 'addEngineer') {
-            switch(addEngineer()) {
-            case 0:
-            addEmployee();
-            break;
-            }
+            addEngineer();
         };
         if(selection.employeeClass === 'addManager') {
-            switch(addManager()) {
-                case 0:
-                addEmployee();
-                break;
-                }
+            addManager();
         };
         if(selection.employeeClass === 'addIntern') {
-            switch(addIntern()) {
-                case 0:
-                addEmployee();
-                break;
-                }
+            addIntern();
         };
         if(selection.employeeClass === 'end') {
-            html = templateFile(employeeArr)
+            const html = templateFile(employeeArr)
             writeFile(html);
         }
     })
 };
+
+generateFile()
 
 function init() {
     addEmployee();
