@@ -1,6 +1,5 @@
 const inquirer = require('inquirer')
-const generateFile = require('./generateFile')
-const fs = require('fs')
+const writeFile = require('./helpers/writeFile')
 
 //constructor classes/questions for each class
 const Manager = require('./roles/Manager');
@@ -108,7 +107,7 @@ const addEmployee = () => {
     return inquirer.prompt(
         [
         {
-            type: 'input',
+            type: 'list',
             name: 'employeeClass',
             message: "What type of team member are you adding?",
             choices: [
@@ -120,25 +119,26 @@ const addEmployee = () => {
         }
     ]).then( selection => {
         if(selection.employeeClass === 'addEngineer') {
-            addEngineer;
+            addEngineer();
             // generateFile();
         };
         if(selection.employeeClass === 'addManager') {
-            addManager;
+            addManager();
             // generateFile();
         };
         if(selection.employeeClass === 'addIntern') {
-            addIntern;
+            addIntern();
             // generateFile();
         };
         if(selection.employeeClass === 'end') {
-            generateFile(employeeArr);
+            html = templateFile(employeeArr)
+            writeFile(html);
         }
     })
 };
 
 function init() {
-    addEmployee;
+    addEmployee();
 }
 
 init();

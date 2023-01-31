@@ -126,4 +126,4 @@ const generateTeamPage = function (employeeCards) {
   }
   
 
-  module.exports = generateFile; 
+  module.exports = templateFile; 
