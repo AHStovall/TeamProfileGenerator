@@ -5,7 +5,7 @@ const fs = require('fs')
 //constructor classes/questions for each class
 const {Manager, managerQuestionsArr} = require('./roles/Manager');
 const { Intern, internQuestionsArr } = require('./roles/Intern');
-const { Engineer, engineerQuestionsArr } = require('./roles/Enginner');
+const { Engineer, engineerQuestionsArr } = require('./roles/Engineer');
 
 //Array to store all of the team members
 const employeeArr = [];

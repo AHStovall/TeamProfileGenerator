@@ -1,4 +1,4 @@
-const Employee = require("../roles/Employee");
+const Employee = require("./Employee");
 
 const engineerQuestionsArr = [{
     type: 'input',
